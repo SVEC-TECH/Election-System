@@ -14,7 +14,7 @@ function generateVotingCode(): string {
 }
 
 async function main() {
-  console.log('🚀 Starting database seed...');
+  console.log(' Starting database seed...');
 
   // Create admin user (sebastiansinc@hotmail.com)
   const adminPassword = await bcrypt.hash('admin123secure', 12);
@@ -98,8 +98,7 @@ async function main() {
     update: {},
     create: {
       id: 'main-election',
-      title: 'Presidential Election 2025',
-      description: 'Choose the next leader of our nation through secure digital voting',
+      title: 'Company CEO Election',
       startDate: new Date('2025-01-01'),
       endDate: new Date('2025-12-31'),
       isActive: true,
@@ -111,14 +110,14 @@ async function main() {
   console.log(`🎫 Generated ${votingCodes.length} voting codes`);
   console.log(`🗳️  Created ${candidates.length} candidates`);
   console.log('\n📋 Sample voting codes:');
-  votingCodes.slice(0, 10).forEach((code, index) => {
+  votingCodes.slice(0, 100).forEach((code, index) => {
     console.log(`   ${index + 1}. ${code.code}`);
   });
 }
 
 main()
   .catch((e) => {
-    console.error('❌ Error seeding database:', e);
+    console.error('Error seeding database:', e);
     process.exit(1);
   })
   .finally(async () => {
